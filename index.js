@@ -1,20 +1,53 @@
 const { listContacts, getContactById, removeContact, addContact } = require('./contacts');
+const { Command } = require('commander');
 
-// Exemple de utilizare a funcțiilor
+const program = new Command();
 
-// 1. Listează contactele
-listContacts();
+program
+  .option('-a, --action <type>', 'alege acțiunea')
+  .option('-i, --id <type>', 'id-ul utilizatorului')
+  .option('-n, --name <type>', 'numele utilizatorului')
+  .option('-e, --email <type>', 'email-ul utilizatorului')
+  .option('-p, --phone <type>', 'telefonul utilizatorului');
 
-// 2. Obține un contact după ID
-getContactById('1');
+program.parse(process.argv);
 
-// 3. Șterge un contact după ID
-removeContact('1');
+const argv = program.opts();
 
-// 4. Adaugă un contact
-addContact({
-  id: '3',
-  name: 'Ion Popescu',
-  phone: '123456789',
-  email: 'ion.popescu@example.com'
-});
+function invokeAction({ action, id, name, email, phone }) {
+  switch (action) {
+    case 'list':
+      listContacts();
+      break;
+
+    case 'get':
+      if (!id) {
+        console.error('Te rog să furnizezi un ID pentru această acțiune.');
+        break;
+      }
+      getContactById(id);
+      break;
+
+    case 'add':
+      if (!name || !email || !phone) {
+        console.error('Te rog să furnizezi numele, email-ul și telefonul pentru a adăuga un contact.');
+        break;
+      }
+      addContact({ id: Date.now().toString(), name, email, phone });
+      break;
+
+    case 'remove':
+      if (!id) {
+        console.error('Te rog să furnizezi un ID pentru a șterge contactul.');
+        break;
+      }
+      removeContact(id);
+      break;
+
+    default:
+      console.warn('\x1B[31m Tip de acțiune necunoscut!');
+  }
+}
+
+invokeAction(argv);
+

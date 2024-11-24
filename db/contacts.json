@@ -58,5 +58,17 @@
     "name": "Ion Popescu",
     "phone": "123456789",
     "email": "ion.popescu@example.com"
+  },
+  {
+    "id": "1732475522657",
+    "name": "Nume Contact",
+    "email": "email@example.com",
+    "phone": "123-456-789"
+  },
+  {
+    "id": "1732476093639",
+    "name": "Mango",
+    "email": "mango@gmail.com",
+    "phone": "322-22-22"
   }
 ]
