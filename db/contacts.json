@@ -54,12 +54,6 @@
     "phone": "(748) 206-2688"
   },
   {
-    "id": "3",
-    "name": "Ion Popescu",
-    "phone": "123456789",
-    "email": "ion.popescu@example.com"
-  },
-  {
     "id": "1732475522657",
     "name": "Nume Contact",
     "email": "email@example.com",
@@ -67,6 +61,12 @@
   },
   {
     "id": "1732476093639",
+    "name": "Mango",
+    "email": "mango@gmail.com",
+    "phone": "322-22-22"
+  },
+  {
+    "id": "1732477716122",
     "name": "Mango",
     "email": "mango@gmail.com",
     "phone": "322-22-22"
